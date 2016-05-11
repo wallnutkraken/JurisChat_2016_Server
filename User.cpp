@@ -14,11 +14,11 @@ public:
         server = serverReference;
     }
     User::~User() {
-
+        throw NotImplementedException();
     }
 
     void User::Disconnect() {
-
+        throw NotImplementedException();
     }
     bool User::AttemptLogin(std::string username, std::string passwordAttempt) {
         return false;
@@ -32,9 +32,10 @@ public:
         _sessionToken = newToken;
     }
     void User::addUnreadMessage(Message message) {
-        /* Not implemented */
+        throw NotImplementedException();
     }
     Message* User::getUnreadMessages() { /* returns a pointer to the array _unreadMessages */
         return _unreadMessages;
     }
+
 };
