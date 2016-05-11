@@ -7,10 +7,13 @@
 
 #include <string>
 #include "Constants.h"
+#include "Message.h"
+
+class Server; /* Forward looking Server class, to break circular dependencies */
 
 class User
 {
-    Server server;
+    std::unique_ptr<Server> server;
 
     std::string _username;
     std::string _saltedPasswordHash;
@@ -21,6 +24,7 @@ class User
 
 public:
     User(Server& serverReference);
+    ~User();
     void Disconnect();
     bool AttemptLogin(std::string username, std::string passwordAttempt);
 

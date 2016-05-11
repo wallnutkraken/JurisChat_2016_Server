@@ -8,7 +8,8 @@
 #include "User.h"
 
 struct Message {
-    User user;
+    std::string senderUsername;
+    std::string receiverUsername;
     std::string text;
     time_t timeStamp;
 };

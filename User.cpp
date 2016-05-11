@@ -13,6 +13,10 @@ public:
     User::User(Server& serverReference) {
         server = serverReference;
     }
+    User::~User() {
+
+    }
+
     void User::Disconnect() {
 
     }
