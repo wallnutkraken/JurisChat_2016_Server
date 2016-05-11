@@ -9,6 +9,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 find_package(Boost 1.60.0 COMPONENTS system regex REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp User.cpp Server.cpp)
 add_executable(JurisChat_2016_Server ${SOURCE_FILES})
 target_link_libraries(JurisChat_2016_Server ${Boost_LIBRARIES})

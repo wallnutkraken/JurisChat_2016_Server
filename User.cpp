@@ -6,20 +6,31 @@
 
 using namespace std;
 
-class User
-{
-
-public:
-    User::User(Server& serverReference) {
+    User::User(Server* serverReference) {
         server = serverReference;
+        _isRealUser = true;
     }
+
     User::~User() {
-        throw NotImplementedException();
+
+    }
+
+    User::User() {
+        _isRealUser = false;
+    }
+
+    void User::setUsername(std::string name) {
+        _username = name;
+    }
+
+    std::string User::getUsername() {
+        return _username;
     }
 
     void User::Disconnect() {
         throw NotImplementedException();
     }
+
     bool User::AttemptLogin(std::string username, std::string passwordAttempt) {
         return false;
     }
@@ -31,11 +42,11 @@ public:
     void User::setSessionToken(std::string newToken) {
         _sessionToken = newToken;
     }
+
     void User::addUnreadMessage(Message message) {
         throw NotImplementedException();
     }
+
     Message* User::getUnreadMessages() { /* returns a pointer to the array _unreadMessages */
         return _unreadMessages;
     }
-
-};

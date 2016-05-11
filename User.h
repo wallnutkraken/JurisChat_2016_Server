@@ -13,18 +13,24 @@ class Server; /* Forward looking Server class, to break circular dependencies */
 
 class User
 {
-    std::unique_ptr<Server> server;
+    Server* server;
 
     std::string _username;
     std::string _saltedPasswordHash;
     std::string _salt;
+    bool _isRealUser;
 
     std::string _sessionToken;
     Message _unreadMessages[MAX_UNREAD_MESSAGES_STORED];
 
 public:
-    User(Server& serverReference);
+    User(Server* serverReference);
     ~User();
+    User();
+
+    void setUsername(std::string name);
+    std::string getUsername();
+
     void Disconnect();
     bool AttemptLogin(std::string username, std::string passwordAttempt);
 

@@ -9,18 +9,22 @@
 #include "Constants.h"
 #include "User.h"
 
+
 class Server
 {
     User _users[MAX_ALLOWED_USERS];
-    std::string generateToken();
-    void receivePacket();
-    void sendPacket(User& user);
+    std::string GenerateToken();
+    void ReceivePacket();
+    void SendPacket(User& user);
+    unsigned int _userCount;
+
 public:
     Server();
     ~Server();
     User FindUser(std::string username);
     std::string LoginUser(std::string username, std::string password, std::string host);
     /* The above method should return the session token */
+    int addUser(User& userToAdd);
 };
 
 
