@@ -2,3 +2,5 @@
 [Bb]in/
 [Ll]ib/
 *.o
+#CLion shit
+.idea/vcs.xml
