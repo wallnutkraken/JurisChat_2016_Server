@@ -8,7 +8,7 @@
 #include <string>
 #include "Constants.h"
 #include "User.h"
-
+#include <boost/asio.hpp>
 
 class Server
 {
@@ -18,8 +18,14 @@ class Server
     void SendPacket(User& user);
     unsigned int _userCount;
 
+    unsigned short _port;
+    boost::asio::ip::udp::socket* _listeningSocket = 0;
+
+    void initServer(boost::asio::io_service &ioService, unsigned short port);
+
 public:
-    Server();
+    Server(boost::asio::io_service &ioService);
+    Server(boost::asio::io_service &ioService, unsigned short port);
     ~Server();
     User FindUser(std::string username);
     std::string LoginUser(std::string username, std::string password, std::string host);

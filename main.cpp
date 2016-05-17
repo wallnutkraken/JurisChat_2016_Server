@@ -8,7 +8,8 @@ using namespace boost;
 
 int main()
 {
-    Server* server = new Server();
+    asio::io_service service;
+    Server* server = new Server(service);
     server->LoginUser("Emile", "badpassword", "none");
     delete(server);
     return 0;

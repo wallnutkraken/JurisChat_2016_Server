@@ -20,18 +20,30 @@ std::string Server::GenerateToken() {
     return "";
 }
 
-Server::Server() {
-    /* Noargs constructor */
+void Server::initServer(boost::asio::io_service &ioService, unsigned short port) {
     _userCount = 0;
+    _port = port;
+    _listeningSocket = new boost::asio::ip::udp::socket(ioService);
+}
+
+Server::Server(boost::asio::io_service &ioService) {
+    initServer(ioService, 1632);
+}
+
+Server::Server(boost::asio::io_service &ioService, unsigned short port) {
+    initServer(ioService, port);
 }
 
 Server::~Server() {
     /* Destructor */
+    _listeningSocket->close();
 }
 
 int Server::addUser(User &userToAdd) {
     if (_userCount + 1 < MAX_ALLOWED_USERS) {
         _users[_userCount] = User(this);
+        User* newUser = &_users[_userCount];
+        newUser->setUsername(userToAdd.getUsername());
         /* TODO: finish this method */
         throw NotImplementedException();
     }

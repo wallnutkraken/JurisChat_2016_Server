@@ -16,7 +16,7 @@ using namespace std;
     }
 
     User::User() {
-        _isRealUser = false;
+        _isRealUser = false; /* Empty user */
     }
 
     void User::setUsername(std::string name) {
@@ -25,6 +25,10 @@ using namespace std;
 
     std::string User::getUsername() {
         return _username;
+    }
+
+    bool User::getIsRealUser() {
+        return _isRealUser;
     }
 
     void User::Disconnect() {

@@ -30,6 +30,7 @@ public:
 
     void setUsername(std::string name);
     std::string getUsername();
+    bool getIsRealUser();
 
     void Disconnect();
     bool AttemptLogin(std::string username, std::string passwordAttempt);
