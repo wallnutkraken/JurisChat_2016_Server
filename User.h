@@ -33,7 +33,7 @@ public:
     bool getIsRealUser();
 
     void Disconnect();
-    bool AttemptLogin(std::string username, std::string passwordAttempt);
+    bool AttemptLogin(std::string passwordAttempt);
 
     std::string getSessionToken();
     void setSessionToken(std::string newToken);

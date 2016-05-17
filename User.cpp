@@ -35,8 +35,10 @@ using namespace std;
         throw NotImplementedException();
     }
 
-    bool User::AttemptLogin(std::string username, std::string passwordAttempt) {
-        return false;
+    bool User::AttemptLogin(std::string passwordAttempt) {
+        if (_username.length() == 0) {
+            return false;
+        }
     }
 
     std::string User::getSessionToken() {

@@ -5,9 +5,11 @@
       <sourceFolder url="file://$MODULE_DIR$/Server.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LoginSecurity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Server.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/User.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/User.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LoginSecurity.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
