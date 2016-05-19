@@ -5,7 +5,8 @@
 #include "LoginSecurity.h"
 
 int LoginSecurity::getRandomNumber() {
-    throw NotImplementedException();
+    srand(time(NULL));
+    return rand() % 1000000000 + 1000;
 }
 
 
@@ -20,7 +21,6 @@ std::string LoginSecurity::Salt() {
 
     /* And here's the random number */
     std::string random = std::to_string(getRandomNumber());
-
     return random + time;
 }
 

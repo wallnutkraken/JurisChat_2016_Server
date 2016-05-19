@@ -6,9 +6,9 @@
 #define JURISCHAT_2016_SERVER_LOGINSECURITY_H
 
 #include <iostream>
-#include <random>
 #include "Exceptions/NotImplementedException.h"
 #include <ctime>
+#include <cstdlib>
 #include <chrono>
 #include <openssl/sha.h>
 #include <openssl/rand.h>
