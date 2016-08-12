@@ -1,25 +1,38 @@
 #include <iostream>
 #include <boost/asio.hpp>
 #include "Server.h"
-#include "Exceptions/NotImplementedException.h"
-#include "LoginSecurity.h"
+#include "Packet.h"
 
 using namespace std;
-using namespace boost;
+//using namespace boost;
 
-int main()
-{
-    LoginSecurity securityProvider;
-    string mystring = "HelloEmile";
-    cout << "For string (" + mystring + ")" << endl;
-    string salt = securityProvider.Salt();
-    cout << "Salt is " + salt << endl;
-    cout << "Salted hash: " + securityProvider.SaltedHash(salt, mystring) << endl;
+void UnitTestLoginSecurity();
+
+int main() {
+    cout << "hello this is different" << endl;
+    try {
+        OPCodeLengths hellothisismything = LOGONH;
+        const char* mycstring = "Hello!!";
+        cout << mycstring << endl;
+        string mystring = mycstring;
+        cout << "gfgfgf" <<endl;
+        Packet myPacket(hellothisismything, mystring);
+        byte* packet = myPacket.Generate();
+        Packet gotPacket = parsePacket(packet);
+        cout << gotPacket.getContent() << endl;
+    }
+    catch (std::exception exception1) {
+        cout << exception1.what() << endl;
+    }
+    /*UnitTestLoginSecurity();
     asio::io_service service;
-    Server* server = new Server(service);
-    server->LoginUser("Emile", "badpassword", "none");
-    delete(server);
+    service.run();
+    Server *server = new Server(service, 1632);
+
+    cout << server->LoginUser("Emile", "badpassword", "none") << endl;
+    delete (server);*/
     return 0;
 }
 
-
+void UnitTestLoginSecurity() {
+}

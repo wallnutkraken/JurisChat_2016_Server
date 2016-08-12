@@ -8,30 +8,32 @@
 #include <string>
 #include "Constants.h"
 #include "User.h"
+#include "LoginSecurity.h"
 #include <boost/asio.hpp>
 #include <chrono>
 
 class Server
 {
-    User _users[MAX_ALLOWED_USERS];
+    User* _users[MAX_ALLOWED_USERS];
     std::string GenerateToken();
     void ReceivePacket();
-    void SendPacket(User& user);
+    void SendPacket(User* user);
     unsigned int _userCount;
 
     unsigned short _port;
-    boost::asio::ip::udp::socket* _listeningSocket = 0;
+    boost::asio::ip::udp::socket* _listeningSocket;
+    boost::asio::ip::udp::endpoint* _endpoint;
+    LoginSecurity _security;
 
-    void initServer(boost::asio::io_service &ioService, unsigned short port);
+    void runServer();
 
 public:
-    Server(boost::asio::io_service &ioService);
     Server(boost::asio::io_service &ioService, unsigned short port);
     ~Server();
-    User FindUser(std::string username);
+    User* FindUser(std::string username);
     std::string LoginUser(std::string username, std::string password, std::string host);
     /* The above method should return the session token */
-    int addUser(User& userToAdd);
+    int addUser(User* userToAdd);
 };
 
 

@@ -13,9 +13,13 @@
 #include <openssl/sha.h>
 #include <openssl/rand.h>
 #include <cstring>
+#include <sstream>
+#include <iomanip>
+#include <string>
 
 class LoginSecurity {
     int getRandomNumber();
+    std::string getHexRepresentation(const unsigned char* hash, size_t length);
 
 public:
     LoginSecurity();

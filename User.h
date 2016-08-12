@@ -18,7 +18,6 @@ class User
     std::string _username;
     std::string _saltedPasswordHash;
     std::string _salt;
-    bool _isRealUser;
 
     std::string _sessionToken;
     Message _unreadMessages[MAX_UNREAD_MESSAGES_STORED];
@@ -26,11 +25,9 @@ class User
 public:
     User(Server* serverReference);
     ~User();
-    User();
 
     void setUsername(std::string name);
     std::string getUsername();
-    bool getIsRealUser();
 
     void Disconnect();
     bool AttemptLogin(std::string passwordAttempt);

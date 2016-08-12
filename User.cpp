@@ -8,15 +8,10 @@ using namespace std;
 
     User::User(Server* serverReference) {
         server = serverReference;
-        _isRealUser = true;
     }
 
     User::~User() {
 
-    }
-
-    User::User() {
-        _isRealUser = false; /* Empty user */
     }
 
     void User::setUsername(std::string name) {
@@ -25,10 +20,6 @@ using namespace std;
 
     std::string User::getUsername() {
         return _username;
-    }
-
-    bool User::getIsRealUser() {
-        return _isRealUser;
     }
 
     void User::Disconnect() {

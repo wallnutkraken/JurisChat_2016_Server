@@ -9,6 +9,16 @@ int LoginSecurity::getRandomNumber() {
     return rand() % 1000000000 + 1000;
 }
 
+/* Generates a hexadecimal representation of the hash, for readability and comparison reasons */
+std::string LoginSecurity::getHexRepresentation(const unsigned char *hash, size_t length) {
+    std::ostringstream os;
+    os.fill('0');
+    os << std::hex;
+    for (const unsigned char *ptr = hash; ptr < hash + length; ptr++) {
+        os << std::setw(2) << (unsigned int) *ptr;
+    }
+    return os.str();
+}
 
 std::string LoginSecurity::Salt() {
     /* Generates salt from a varitety of unique parts of the system: */
@@ -28,16 +38,15 @@ LoginSecurity::LoginSecurity() {
 }
 
 std::string LoginSecurity::SaltedHash(std::string salt, std::string password) {
-    const int length = salt.length() + password.length(); /* get the length of the combined string */
+    const unsigned long length = salt.length() + password.length(); /* get the length of the combined string */
     unsigned char saltedPassword[length];
-    strcpy((char*)saltedPassword, (salt + password).c_str()); /* and copy it into a container that  */
+    strcpy((char *) saltedPassword, (salt + password).c_str()); /* and copy it into a container that  */
     /* SHA1() can use */
 
     unsigned char hash[SHA_DIGEST_LENGTH];
 
     SHA1(saltedPassword, length, hash);
 
-    std::string hashString(hash, hash + sizeof(hash) / sizeof(hash[0]));
 
-    return hashString;
+    return getHexRepresentation(hash, length);
 }
